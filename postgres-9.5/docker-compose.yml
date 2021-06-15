@@ -1,0 +1,13 @@
+version: "3.6"
+services:
+    postgres:
+        container_name: postgres_db
+        build:
+            dockerfile: Dockerfile
+        image: postgres:latest
+        ports:
+            - "5432:5432"
+        environment:
+            FLASK_ENV: development
+            POSTGRES_DB: "db"
+            POSTGRES_HOST_AUTH_METHOD: "trust"
