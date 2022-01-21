@@ -1,10 +1,5 @@
 FROM tensorflow/tensorflow:2.7.0
 
-docker pull tensorflow/tensorflow:devel
-docker run -it -w /tensorflow_src -v $PWD:/mnt -e HOST_PERMS="$(id -u):$(id -g)" \
-    tensorflow/tensorflow:devel bash
-
-git pull  # within the container, download the latest source code
 
 #RUN apt-get update
 #RUN apt-get install -y python3.7-dev python3-pip curl
