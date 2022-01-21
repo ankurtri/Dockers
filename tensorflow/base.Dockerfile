@@ -1,9 +1,15 @@
 FROM tensorflow/tensorflow:2.7.0
-#RUN apt-get update
-#RUN apt-get install -y python3.7-dev python3-pip curl
-#RUN ln -sfn /usr/bin/python3.7 /usr/bin/python
-#RUN pip3 install --upgrade pip
-#RUN pip install tensorflow==2.7
+
+#Creating a non-root user
+ARG USER_ID=1000
+ARG USER_NAME=nonroot
+RUN groupadd docker
+RUN useradd -m --no-log-init --system  --uid ${USER_ID} ${USER_NAME} -g docker
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+USER ${USER_NAME}
+WORKDIR /home/${USER_NAME}
+
+
 RUN echo "Hello"
 ENTRYPOINT [""]
 
